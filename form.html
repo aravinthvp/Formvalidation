@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head><title>Form Validation</title>
+<script type="text/javascript">
+   function validateName()
+    {
+   var name =document.getElementById("CN").value;
+   if(name.length == 0)
+    {
+   producePrompt("name is Required","CNP","red");
+   return false;
+    }
+   if(!name.match(/^[A-Za-z]*\s{1}[A-Za-z]*$/))
+    {
+   producePrompt("Enter the name properly Fname spacce Lname","CNP","red");
+   return false;
+    }
+    producePrompt("Your name is  " + name ,"CNP","green");
+    return true;	
+    } 
+	
+	/////MOBILE
+   function validatePhone()
+    {
+    var Phone =document.getElementById("CP").value;
+	if(Phone.length == 0 )
+	{
+	producePrompt("number is Required","CPP","red");
+	return false;
+	}
+	if(Phone.length != 10)
+	{
+	producePrompt("Must be in 10 Values","CPP","red");
+	return false;
+	}
+	if(!Phone.match(/^[0-9]{10}$/))
+	{
+	producePrompt("Enter the correct valid number","CPP","red");
+	return false;
+	}
+	
+	producePrompt(Phone,"CPP","green");
+	return true;
+   }
+    ///MAIL 
+   
+   function validateMail()
+   {
+   var mail =document.getElementById("CE").value;
+   
+   if(mail.length == 0)
+    {
+   producePrompt("mail id  is Required","CEP","red");
+   return false;
+    }
+	if(!mail.match(/^[A-Za-z]*\@[a-z]*\.[a-z]{2,4}/))
+	{
+	producePrompt("Enter the valid email id","CEP","red");
+	return false;
+	}
+   producePrompt("your mail id is "+ mail ,"CEP","green");
+   return true;
+   }
+ 
+/*
+requires char =30
+0-30
+1-29
+2-28
+3-27
+4-26
+
+left=required -curr length 
+*/ 
+function validateComment()
+{
+  var comment = document.getElementById("CC").value;
+  var require = 30;
+  var left =require -comment.length;
+  if(left >0)
+  {
+  producePrompt(left +"Characters Required ","CMP","red");
+  return false ;
+  }
+  producePrompt("valid Comment","CMP","green");
+  return true;
+  }
+
+
+
+
+
+ function producePrompt(message,PromptLocation,color)
+{
+document.getElementById(PromptLocation).innerHTML = message;
+document.getElementById(PromptLocation).style.color = color;
+
+
+
+}  
+
+
+
+
+
+
+  </script>
+
+</head>
+<style>
+
+</style>
+<body>
+
+  <div class="CFRW"> 
+  <form>
+  <input id="CN" onkeyup="validateName()" class="CFI" type="text"/><label id ="CNP"></label><br><br>
+  <input id="CP" onkeyup="validatePhone()" class="CFI" type="text"/><label id ="CPP"></label><br><br>
+  <input id="CE" onkeyup="validateMail()" class="CFI" type="text"/><label id = "CEP"></label><br><br>
+  <textarea id="CC"  onkeyup="validateComment()" class="CFTA"></textarea ><label id="CMP"></label><br>
+  <button>Submit</button>
+  </form>
+  </div>
+  <div class ="clearBoth"></div>
+  </div>
+  
+  </body>
+</html>
